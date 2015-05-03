@@ -161,7 +161,7 @@
 
 
 ;; Custom Packages
-(autoload 'nasm-mode "~/.emacs.d/nasm-mode.el" "" t)
-(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
-(add-hook 'nasm-mode-hook
-          (lambda () (setq-default nasm-basic-offset 2)))
+(autoload 'vm-mode "~/.emacs.d/vm-mode.el" "" t)
+(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . vm-mode))
+(add-hook 'vm-mode-hook
+          (lambda () (setq-default vm-basic-offset 2)))

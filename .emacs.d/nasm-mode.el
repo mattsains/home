@@ -54,7 +54,6 @@
   (beginning-of-line)
   (if (or (looking-at "^[ \t]*\\(%\\(?:a\\(?:rg\\|ssign\\)\\|define\\|e\\(?:l\\(?:if\\(?:ctk\\|def\\|id\\(?:ni?\\)?\\|macro\\|n\\(?:ctk\\|def\\|id\\(?:ni?\\)?\\|macro\\|num\\|str\\|um\\)\\|str\\)?\\|se\\)\\|nd\\(?:if\\|macro\\|rep\\)\\|rror\\|xitrep\\)\\|i\\(?:assign\\|define\\|f\\(?:ctk\\|def\\|id\\(?:ni?\\)?\\|macro\\|n\\(?:ctk\\|def\\|id\\(?:ni?\\)?\\|macro\\|num\\|str\\|um\\)\\|str\\)?\\|macro\\|nclude\\)\\|l\\(?:ine\\|ocal\\)\\|macro\\|p\\(?:op\\|ush\\)\\|r\\(?:epl?\\|otate\\)\\|s\\(?:t\\(?:acksize\\|rlen\\)\\|ubstr\\)\\|undef\\|x\\(?:i?define\\)\\)\\|\\.nolist\\|a\\(?:bsolute\\|lignb?\\|t\\)\\|bits\\|c\\(?:ommon\\|pu\\)\\|d[bdqtw]\\|e\\(?:n\\(?:d\\(?:\\(?:pro\\|stru\\)c\\)\\|try\\)\\|qu\\|x\\(?:port\\|tern\\)\\)\\|g\\(?:lobal\\|roup\\)\\|i\\(?:end\\|mport\\|ncbin\\|struc\\)\\|org\\|proc\\|res[bdqtw]\\|s\\(?:ection\\|truct\\)\\|times\\|use\\(?:16\\|32\\|64\\)\\)")
           (looking-at "^[ \t]*[a-zA-Z0-9_.?][a-zA-Z0-9_$#@~.?]*:")
-          (looking-at "^function")
           (looking-at "^[ \t]*;"))
       (indent-line-to 0)   ; line is a directive, a label or a comment
     (indent-line-to nasm-basic-offset)))
