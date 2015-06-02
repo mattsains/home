@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=empathy -h
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Empathy Login
+Comment=Signs you in to Empathy at login
