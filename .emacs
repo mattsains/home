@@ -1,3 +1,25 @@
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-enabled-themes (quote (tango-dark))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; UI
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+
 (require 'cl)
 (setq user-full-name "Matthew Sainsbury")
 (setq user-mail-address "matthew@sainsbury.za.net")
@@ -65,13 +87,7 @@
       initial-scratch-message nil
       initial-major-mode 'org-mode)
 
-;; UI
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
-(delete-selection-mode t)
-(transient-mark-mode nil)
+(setq transient-mark-mode nil)
 (setq x-select-enable-clipboard t)
 
 ;; Indentation set to two spaces
@@ -112,6 +128,7 @@
 ;; Autocomplete
 (require 'auto-complete-config)
 (ac-config-default)
+(setq ac-auto-start nil)
 
 ;; Ruby tweaks
 (add-hook 'ruby-mode-hook
@@ -134,6 +151,23 @@
 
 (add-hook 'js-mode-hook 'js-custom)
 
+;; Hungry WS deletion
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (local-set-key (kbd "C-<backspace>")
+                           (lambda ()
+                             (interactive)
+                             (if (looking-back "[ \t\n]")
+                                 (c-hungry-delete-backwards)
+                               (backward-kill-word 1))))
+            (local-set-key (kbd "C-<deletechar>")
+                           (lambda ()
+                             (interactive)
+                             (if (looking-at "[ \t\n]")
+                                 (c-hungry-delete-forward)
+                               (kill-word 1))))))
+                               
+
 ;; Markdown support
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.mdown$" . markdown-mode))
@@ -144,24 +178,11 @@
             (flyspell-mode t)))
 (setq markdown-command "pandoc --smart -f markdown -t html")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (tango-dark))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
 ;; Custom Packages
 (autoload 'vm-mode "~/.emacs.d/vm-mode.el" "" t)
 (add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . vm-mode))
 (add-hook 'vm-mode-hook
           (lambda () (setq-default vm-basic-offset 2)))
+
+;;Environment
+(setq scheme-program-name "guile")
