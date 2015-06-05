@@ -12,6 +12,9 @@ fi
 
 alias ls='ls -lh --color=auto '
 alias emacs='emacs -nw'
+alias cdiff='git diff --no-index -- '
+
+alias gs='git status'
 
 alias work='cd /home/matt/Varsity/Treatise/Work'
 alias bench='cd /home/matt/Varsity/Treatise/benchmarks'
