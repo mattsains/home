@@ -4,6 +4,7 @@
 		      "smex.el"
 		      "ido.el"
 		      "ui.el"
-		      "vanilla-overrides.el"))
+		      "vanilla-overrides.el"
+                      "magit.el"))
 
 (dolist (file files-to-load) (load-file (concat "~/.emacs.d/" file)))
