@@ -1,0 +1,6 @@
+[user]
+	name = Matthew Sainsbury
+	email = matthew@sainsbury.za.net
+[core]
+	autocrlf = false
+	editor = emacs -nw

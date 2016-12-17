@@ -1,0 +1,6 @@
+*
+!.emacs
+!.bashrc
+!.gitignore
+!.emacs.d/
+!.emacs.d/*.el
